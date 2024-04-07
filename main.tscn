@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://1e2xf1k4v7mx"]
+
+[ext_resource type="Script" path="res://networking/network_controller.gd" id="1_ox35x"]
+[ext_resource type="PackedScene" uid="uid://c3rapcolma3om" path="res://MultiplayerMenu.tscn" id="2_5mcmg"]
+
+[node name="Main" type="Node"]
+
+[node name="Network" type="Node" parent="."]
+script = ExtResource("1_ox35x")
+
+[node name="MutliplayerMenu" parent="." instance=ExtResource("2_5mcmg")]

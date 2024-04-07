@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://dkjo312bqe7xp"]
+
+[ext_resource type="Script" path="res://board/test_scene.gd" id="1_uihvl"]
+
+[node name="TestScene" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_uihvl")
+
+[node name="PlayerLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 608.0
+offset_top = 552.0
+offset_right = 648.0
+offset_bottom = 575.0
+text = "player text"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 72.0
+offset_right = 120.0
+offset_bottom = 95.0
+text = "test text
+"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 904.0
+offset_top = 80.0
+offset_right = 944.0
+offset_bottom = 103.0
+text = "Test text"
