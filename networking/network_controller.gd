@@ -54,7 +54,7 @@ func send_player_info(player_name: String, id: int):
 	
 #@rpc('any_peer', 'call_local')
 func start_game():
-	var scene = load("res://board/test_scene.tscn").instantiate()
+	var scene = load("res://board/game_board.tscn").instantiate()
 	get_tree().root.add_child(scene)
 	
 	GameManager.game_scene_loaded.emit()

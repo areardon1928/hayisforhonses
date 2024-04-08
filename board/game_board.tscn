@@ -1,0 +1,82 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkjo312bqe7xp"]
+
+[ext_resource type="Script" path="res://board/game_board.gd" id="1_034lr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gg74d"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(0.192157, 0.192157, 0.192157, 1)
+
+[node name="GameBoard" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_034lr")
+
+[node name="PlayerLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 560.0
+offset_top = 440.0
+offset_right = 644.0
+offset_bottom = 463.0
+text = "player text"
+
+[node name="CurrentTurnLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 544.0
+offset_top = 288.0
+offset_right = 728.0
+offset_bottom = 320.0
+
+[node name="Test Turn" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 432.0
+offset_top = 288.0
+offset_right = 544.0
+offset_bottom = 320.0
+text = "Current Turn: "
+
+[node name="PlayerArea" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.66
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_gg74d")
+
+[node name="PanelContainer" type="HBoxContainer" parent="PlayerArea"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PlayerArea/PanelContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="PlayerHand" type="HBoxContainer" parent="PlayerArea/PanelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="PlayerArea/PanelContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="EndTurnButton" type="Button" parent="PlayerArea/PanelContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "End Turn"

@@ -5,6 +5,8 @@ signal initial_connect_succeeded()
 signal game_scene_loaded()
 signal game_setup_complete() #inidcates when all inital game set up has been completed by server and recieved by clients
 
+signal new_turn_begun()
+
 var players_info: Array[PlayerInfo] = []
 
 # Turn Management vars
@@ -13,7 +15,7 @@ var current_turn_index: int = 0      #reference to the index of the current turn
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	pass
 
 #region Player Info Management
 func add_player_info(player_name: String, id: int):
@@ -58,3 +60,19 @@ func set_inital_game_info(initial_turn_order: Array):
 	GameManager.game_setup_complete.emit()
 	
 #endregion
+
+#region Turn Management
+@rpc('authority', 'call_local')
+func start_new_turn(turn_index: int):
+	current_turn_index = turn_index
+	new_turn_begun.emit()
+
+@rpc('any_peer', 'call_local')
+func end_turn():
+	# check to make sure this is being executed on the server and that the player ending the turn is 
+	# 	the player who's turn it currently is
+	if multiplayer.is_server() && multiplayer.get_remote_sender_id() == turn_order_list[current_turn_index]:
+		current_turn_index += 1
+		if current_turn_index >= turn_order_list.size():
+			current_turn_index = 0
+		start_new_turn.rpc(current_turn_index)
