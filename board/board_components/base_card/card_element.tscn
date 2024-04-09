@@ -28,6 +28,7 @@ offset_bottom = 158.0
 pivot_offset = Vector2(56, 79)
 size_flags_horizontal = 4
 size_flags_vertical = 4
+tooltip_text = "ffff"
 theme_override_styles/panel = ExtResource("1_nek8r")
 script = ExtResource("2_ve65y")
 
